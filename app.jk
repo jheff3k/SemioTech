@@ -1,0 +1,45 @@
+import React from 'react';
+import { SafeAreaView, View, Text, TouchableOpacity } from 'react-native';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import  { useFonts, Ubuntu_400Regular, Ubuntu_700Bold } from '@expo-google-fonts/ubuntu';
+
+
+
+const App = () => {
+
+  const buttonStyles = {
+    backgroundColor: '#083b66',
+    padding: 20,
+    width: '90%',
+    borderRadius: 5,
+    flexDirection: 'row',
+    justifyContent: 'space-around'
+  };
+
+  const [FontLoaded] = useFonts({
+    Ubuntu_400Regular, 
+    Ubuntu_700Bold,
+  })
+
+  return (
+    <SafeAreaView 
+      style={{
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center'
+      }}>
+      <View>
+        <Text style={{fontSize:40,color:'#083b66',fontFamily:'Ubuntu_700Bold'}}>
+          SemioTech
+        </Text>
+      </View>
+      <TouchableOpacity style={buttonStyles}>
+        <Text style={{fontSize:18,color:'#fff',fontFamily:'Ubuntu_400Regular'}}>Bora Lá!</Text>
+        <MaterialIcons name="arrow-forward-ios" size={22} color="#fff" />
+      </TouchableOpacity>
+    </SafeAreaView>
+  );
+};
+
+
+export default App;
