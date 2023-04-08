@@ -30,11 +30,18 @@ Se foi executado expo prebuilde e a pasta iOS não foi gerada, pode haver alguns
 
 Espero que uma dessas soluções ajude você a gerar a pasta iOS para o seu projeto.
 
-
-
 Problemas sobre a pasta IOS:
 > Parece que você está executando o npx pod-installcomando em uma máquina não Darwin. O CocoaPods, o gerenciador de dependências para projetos iOS que pod-installusa, é suportado apenas no macOS.
 
 > Se você estiver tentando criar a versão iOS do seu aplicativo em uma máquina Windows ou Linux, precisará usar uma máquina macOS para executar o pod installcomando. Você pode usar uma máquina macOS física ou usar uma máquina virtual em sua máquina Windows ou Linux para executar o macOS.
 
 > Como alternativa, você pode considerar o uso de um serviço como as atualizações Over-the-Air da Expo, que permite implantar atualizações em seu aplicativo sem reconstruir e enviar novos arquivos binários para as lojas de aplicativos. Isso permitiria que você fizesse alterações no JavaScript e em outros ativos em seu aplicativo sem precisar executar o pod installcomando em uma máquina macOS.
+
+
+
+
+
+
+Fonts:
+- https://github.com/expo/google-fonts
+- https://fonts.google.com/
