@@ -1,6 +1,10 @@
 # SemioTech
 Aplicativo para UFPI
 
+
+Passo a passo para instalação do React Native:
+> https://reactnative.dev/docs/environment-setup?guide=quickstart&package-manager=npm
+
 Para criar o projeto:
 - npx create-expo-app namedoprojet
 
