@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { SafeAreaView, View, Text, TouchableOpacity } from 'react-native';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import { loadFonts } from './Fonts';
+import SemioTechIcons from '../AwesomeProject/assets/SemioTechIcons.svg';
 
 export default function App() {
   const [fontsLoaded, setFontsLoaded] = useState(false);
@@ -40,6 +41,7 @@ export default function App() {
           SemioTech
         </Text>
       </View>
+      <SemioTechIcons width={500} height={500}/>
       <TouchableOpacity style={buttonStyles}>
         <Text style={{ fontSize: 18, color: '#fff', fontFamily: 'Ubuntu-Bold' }}>Bora Lá!</Text>
         <MaterialIcons name="arrow-forward-ios" size={22} color="#fff" />
