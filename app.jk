@@ -1,25 +1,32 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { SafeAreaView, View, Text, TouchableOpacity } from 'react-native';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import  { useFonts, Ubuntu_400Regular, Ubuntu_700Bold } from '@expo-google-fonts/ubuntu';
+import { loadFonts } from './Fonts';
 
+export default function App() {
+  const [fontsLoaded, setFontsLoaded] = useState(false);
 
+  useEffect(() => {
+    async function load() {
+      await loadFonts();
+      setFontsLoaded(true);
+    }
 
-const App = () => {
+    load();
+  }, []);
+
+  if (!fontsLoaded) {
+    return null; // or a loading screen
+  }
 
   const buttonStyles = {
     backgroundColor: '#083b66',
     padding: 20,
-    width: '90%',
+    width: '70%',
     borderRadius: 5,
     flexDirection: 'row',
-    justifyContent: 'space-around'
+    justifyContent: 'space-between'
   };
-
-  const [FontLoaded] = useFonts({
-    Ubuntu_400Regular, 
-    Ubuntu_700Bold,
-  })
 
   return (
     <SafeAreaView 
@@ -29,17 +36,14 @@ const App = () => {
         alignItems: 'center'
       }}>
       <View>
-        <Text style={{fontSize:40,color:'#083b66',fontFamily:'Ubuntu_700Bold'}}>
+        <Text style={{ fontSize: 40, color: '#083b66', fontFamily: 'BraahOne-Regular'}}>
           SemioTech
         </Text>
       </View>
       <TouchableOpacity style={buttonStyles}>
-        <Text style={{fontSize:18,color:'#fff',fontFamily:'Ubuntu_400Regular'}}>Bora Lá!</Text>
+        <Text style={{ fontSize: 18, color: '#fff', fontFamily: 'Ubuntu-Bold' }}>Bora Lá!</Text>
         <MaterialIcons name="arrow-forward-ios" size={22} color="#fff" />
       </TouchableOpacity>
     </SafeAreaView>
   );
-};
-
-
-export default App;
+}
