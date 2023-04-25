@@ -19,7 +19,7 @@ const App = () => {
   );
 }
 
-const Main = () => {
+const Main = ({ navigation }) => {
   const [fontsLoaded, setFontsLoaded] = useState(false);
 
   useEffect(() => {
@@ -30,6 +30,11 @@ const Main = () => {
 
     load();
   }, []);
+
+  const handlePress = () => {
+    console.log('navigation:', navigation);
+    navigation.navigate ('Home');
+  };
 
   if (!fontsLoaded) {
     return null; // or a loading screen
@@ -44,7 +49,6 @@ const Main = () => {
     justifyContent: 'space-between'
   };
 
-  
   return (
     <SafeAreaView 
       style={{
@@ -62,23 +66,30 @@ const Main = () => {
         </Text>
       </View>
       <SemioTechIcons 
-      width={500} 
-      height={500}
+        width={500} 
+        height={500}
       />
-      <TouchableOpacity style={buttonStyles}>
+      <TouchableOpacity 
+        style={buttonStyles} 
+        onPress={handlePress}
+      >
         <Text style={{ 
           fontSize: 18, 
           color: '#fff', 
           fontFamily: 'Ubuntu-Bold' 
-          }}>Bora Lá!</Text>
+        }}>
+          Bora Lá!
+        </Text>
         <MaterialIcons 
-        name="arrow-forward-ios" 
-        size={22} 
-        color="#fff" />
+          name="arrow-forward-ios" 
+          size={22} 
+          color="#fff" 
+        />
       </TouchableOpacity>
     </SafeAreaView>
   );
-}
+};
+
 
 const Home = () => {
   return (
