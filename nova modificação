@@ -9,7 +9,14 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 const Stack = createNativeStackNavigator();
 
 const App = () => {
-  return <Home/>
+  return (
+  <NavigationContainer>
+    <Stack.Navigator>
+      <Stack.Screen component={Main} name="Main" />
+      <Stack.Screen component={Home} name="Home" />
+    </Stack.Navigator>
+  </NavigationContainer>
+  );
 }
 
 const Main = () => {
@@ -37,6 +44,7 @@ const Main = () => {
     justifyContent: 'space-between'
   };
 
+  
   return (
     <SafeAreaView 
       style={{
