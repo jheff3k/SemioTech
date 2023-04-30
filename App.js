@@ -1,32 +1,29 @@
 import React, { useEffect, useState } from 'react';
 import { SafeAreaView, View, Text, TouchableOpacity } from 'react-native';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import { loadFonts } from './Fonts';
-import SemioTechIcons from '../Project2/assets/SemioTechIcons.svg';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import HomeScreen from '../Project2/src/screens/HomeScreen';
+import HomeScreen from '../../SemioTech/AwesomeProject/src/screens/HomeScreen';
+import SemioTechIcons from './src/assets/SemioTechIcons';
+
+import { loadFonts } from './Fonts';
+
+const buttonStyles = {
+  backgroundColor: '#083b66',
+  padding: 20,
+  width: '70%',
+  borderRadius: 5,
+  flexDirection: 'row',
+  justifyContent: 'space-between',
+};
 
 const Stack = createNativeStackNavigator();
 
-const App = () => {
-  return (
-  <NavigationContainer>
-    <Stack.Navigator>
-      <Stack.Screen 
-        component={Main} 
-        name="Main" 
-        options={{headerShown:false}}/>
-      <Stack.Screen 
-        component={HomeScreen} 
-        name="Home" 
-        options={{headerShown:false}}/>
-    </Stack.Navigator>
-  </NavigationContainer>
-  );
-}
+const MainScreen = ({ navigation }) => {
+  const handlePress = () => {
+    navigation.navigate('Home');
+  };
 
-const Main = ({ navigation }) => {
   const [fontsLoaded, setFontsLoaded] = useState(false);
 
   useEffect(() => {
@@ -38,24 +35,9 @@ const Main = ({ navigation }) => {
     load();
   }, []);
 
-  const handlePress = () => {
-    console.log('navigation:', navigation);
-    navigation.navigate ('Home');
-  };
-
   if (!fontsLoaded) {
     return null; // or a loading screen
   }
-
-  const buttonStyles = {
-    backgroundColor: '#083b66',
-    padding: 20,
-    width: '70%',
-    borderRadius: 5,
-    flexDirection: 'row',
-    justifyContent: 'space-between'
-  };
-
   return (
     <SafeAreaView 
       style={{
@@ -97,13 +79,23 @@ const Main = ({ navigation }) => {
   );
 };
 
-
-const Home = () => {
-   return (
-    <View style={{flex:1,justifyContent:'center',alignItems:'center'}}>
-      <Text>Home screen</Text>
-    </View>
+const App = () => {
+  return (
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen 
+          component={MainScreen} 
+          name="MainScreen" 
+          options={{headerShown:false}} 
+        />
+        <Stack.Screen 
+          component={HomeScreen} 
+          name="Home" 
+          options={{headerShown:false}} 
+        />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
- }
+}
 
 export default App;
