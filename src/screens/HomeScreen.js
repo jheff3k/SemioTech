@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
-import { View, Text, ScrollView, ImageBackground, TextInput, TouchableOpacity } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { View, Text, ScrollView, ImageBackground, TextInput, TouchableOpacity, } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Feather from 'react-native-vector-icons/Feather';
 import { introducao, examefisicogeral } from '../../src/model/data';
 import CustomSwitch from '../../src/components/CustomSwitch';
 import ListItem from '../../src/components/ListItem';
+import { loadFonts } from '../../Fonts';
 
 const HomeScreen = ({navigation}) => {
   const [gamesTab, setGamesTab] = useState(1);
@@ -14,6 +15,20 @@ const HomeScreen = ({navigation}) => {
     setGamesTab(value);
   };
 
+  const [fontsLoaded, setFontsLoaded] = useState(false);
+
+  useEffect(() => {
+    async function load() {
+      await loadFonts();
+      setFontsLoaded(true);
+    }
+
+    load();
+  }, []);
+
+  if (!fontsLoaded) {
+    return null; // or a loading screen
+  }
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: '#fff' }}>
       <ScrollView style={{ padding: 19 }}>
